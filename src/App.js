@@ -1,4 +1,5 @@
 import React,{Component} from "react";
+//import reactstrap
 import {Navbar, NavbarBrand} from "reactstrap";
 import Menu from "./compoents/MenuComponent";
 import {DISHES} from "./shared/dishes";
@@ -20,6 +21,7 @@ class App extends Component {
               </NavbarBrand>
             </div>
           </Navbar>
+            {/*pass dish information to menu component*/}
           <Menu dishes={this.state.dishes}/>
         </div>
     );

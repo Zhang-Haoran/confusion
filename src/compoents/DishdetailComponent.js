@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Card,CardImg, CardImgOverlay, CardText,CardBody,CardTitle} from 'reactstrap';
+import {Card,CardImg, CardText,CardBody,CardTitle} from 'reactstrap';
 class DishDetail extends Component{
     constructor(props) {
         super(props);
@@ -7,10 +7,16 @@ class DishDetail extends Component{
 
     };
 
+    componentDidMount() {
+        console.log("DishdetailComponent did mount")
+    }
+
+    componentDidUpdate() {
+        console.log("DishdetailComponent did update")
+    }
 
     //show dish detail
     renderDish(dish){
-        console.log(dish);
         //dish exists, show it in card
         if(dish != null){
             return(
@@ -39,7 +45,6 @@ class DishDetail extends Component{
             const commentsArray = dish.comments;
             if (commentsArray != null) {
                 comments = commentsArray.map((comment) => {//map every comment in array, store the UI into comments
-                    console.log(comment);
                     return (
 
                         <div key={comment.id}>
@@ -74,7 +79,6 @@ class DishDetail extends Component{
 
     render() {
         console.log('DishDetail Component render is invoked')
-        console.log(this.props);
         //props contains selectedDishes as its key
         //selectedDishes: {id: 3, name: "ElaiCheese Cake", image: "assets/images/elaicheesecake.png", c....
             return (

@@ -79,11 +79,11 @@ import {Link} from "react-router-dom";
                         <Link to='/menu'>Menu</Link>
                     </BreadcrumbItem>
                     <BreadcrumbItem active>
-                        {props.dish.name}
+                        {props.dish[0].name}
                     </BreadcrumbItem>
                 </Breadcrumb>
                 <div className="col-12">
-                    <h3> {props.dish.name}</h3>
+                    <h3> {props.dish[0].name}</h3>
                 </div>
             </div>
             <div className="row">

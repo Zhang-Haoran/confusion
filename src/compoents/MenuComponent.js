@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardImg, CardImgOverlay, CardTitle,Breadcrumb,BreadcrumbItem} from "reactstrap";
 import {Link} from "react-router-dom";
-
+//为什么函数的参数需要中括号？？？
 function RenderMenuItem({dish, onClick}) {
     return (
         <Card>

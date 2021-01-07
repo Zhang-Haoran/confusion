@@ -1,12 +1,12 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import RenderLeader from "./RenderLeader";
 
 function About(props) {
-
     const leaders = props.leaders.map((leader) => {
         return (
-            <p>Leader {leader.name}</p>
+            <RenderLeader leader={leader}/>
         );
     });
 
@@ -73,3 +73,5 @@ function About(props) {
         </div>
     );
 }
+
+export default About;

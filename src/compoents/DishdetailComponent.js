@@ -1,33 +1,22 @@
-import React,{Component} from 'react';
-import {Card,CardImg, CardText,CardBody,CardTitle} from 'reactstrap';
-class DishDetail extends Component{
-    constructor(props) {
-        super(props);
-        console.log('DishDetail Component constructor is invoked');
+import React from 'react';
+import {Card,CardImg, CardText,CardBody,CardTitle,BreadcrumbItem,Breadcrumb} from 'reactstrap';
+import {Link} from "react-router-dom";
 
-    };
 
-    componentDidMount() {
-        console.log("DishdetailComponent did mount")
-    }
-
-    componentDidUpdate() {
-        console.log("DishdetailComponent did update")
-    }
 
     //show dish detail
-    renderDish(dish){
+   function RenderDish({dish}){
         //dish exists, show it in card
         if(dish != null){
             return(
                 <Card>
-                    <CardImg width="100%" src={dish.image} alt={dish.name}></CardImg>
+                    <CardImg width="100%" src={dish[0].image} alt={dish[0].name}/>
                     <CardBody>
                         <CardTitle>
-                            {dish.name}
+                            {dish[0].name}
                         </CardTitle>
                         <CardText>
-                            {dish.description}
+                            {dish[0].description}
                         </CardText>
                     </CardBody>
                 </Card>
@@ -39,10 +28,10 @@ class DishDetail extends Component{
         }
     }
 
-    renderComments(dish){
+    function RenderComments({dish}){
         let comments ="";//used to store the comments if the dish has comments
         if(dish != null) {
-            const commentsArray = dish.comments;
+            const commentsArray = dish;
             if (commentsArray != null) {
                 comments = commentsArray.map((comment) => {//map every comment in array, store the UI into comments
                     return (
@@ -77,24 +66,36 @@ class DishDetail extends Component{
 
     }
 
-    render() {
-        console.log('DishDetail Component render is invoked')
-        //props contains selectedDishes as its key
-        //selectedDishes: {id: 3, name: "ElaiCheese Cake", image: "assets/images/elaicheesecake.png", c....
-            return (
-                <div className="container">
-                <div className="row">
-                    <div className="col-12 col-md-5 m-1">
-                        {this.renderDish(this.props.dish)}
-                    </div>
-                    <div className="col-12 col-md-5 m-1">
-                        {this.renderComments(this.props.dish)}
-                    </div>
+   const DishDetail =(props)=>
+{
+    console.log('DishDetail Component render is invoked')
+    //props contains selectedDishes as its key
+    //selectedDishes: {id: 3, name: "ElaiCheese Cake", image: "assets/images/elaicheesecake.png", c....
+    return (
+        <div className="container">
+            <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem>
+                        <Link to='/menu'>Menu</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem active>
+                        {props.dish.name}
+                    </BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12">
+                    <h3> {props.dish.name}</h3>
                 </div>
+            </div>
+            <div className="row">
+                <div className="col-12 col-md-5 m-1">
+                    <RenderDish dish={props.dish}/>
                 </div>
-            );
-
-    }
-
+                <div className="col-12 col-md-5 m-1">
+                    <RenderComments dish={props.comments}/>
+                </div>
+            </div>
+        </div>
+    );
 }
+
 export default DishDetail

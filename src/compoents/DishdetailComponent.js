@@ -14,7 +14,7 @@ import {
 import {Link} from "react-router-dom";
 import {Errors, LocalForm,Control} from "react-redux-form";
 import {Loading} from "./LoadingComponent";
-
+import {baseUrl} from "../shared/baseUrl"
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val)||(val.length <=len);
@@ -29,6 +29,7 @@ class CommentForm extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
     }
+
 
     toggleModal(){
         this.setState(
@@ -114,7 +115,7 @@ class CommentForm extends Component{
         if(dish != null){
             return(
                 <Card>
-                    <CardImg width="100%" src={dish[0].image} alt={dish[0].name}/>
+                    <CardImg width="100%" src={baseUrl+dish[0].image} alt={dish[0].name}/>
                     <CardBody>
                         <CardTitle>
                             {dish[0].name}

@@ -40,7 +40,7 @@ class CommentForm extends Component{
     }
 
     handleSubmit(values){
-       this.props.addComment(this.props.dishId,values.rating,values.author,values.comment)
+       this.props.postComment(this.props.dishId,values.rating,values.author,values.comment)
     }
 
     render() {
@@ -133,7 +133,7 @@ class CommentForm extends Component{
         }
     }
 
-    function RenderComments({dish,addComment,dishId}){
+    function RenderComments({dish,postComment,dishId}){
         let comments ="";//used to store the comments if the dish has comments
         if(dish != null) {
             const commentsArray = dish;
@@ -160,7 +160,7 @@ class CommentForm extends Component{
                 <div>
                     <h4>Comments</h4>
                     {comments}
-                    <CommentForm dishId = {dishId} addComment={addComment}/>
+                    <CommentForm dishId = {dishId} postComment={postComment}/>
                 </div>
             );
         }else {//if dish is null which means it is initialized at first time, don't show Comments heading
@@ -214,7 +214,7 @@ class CommentForm extends Component{
                         <RenderDish dish={props.dish}/>
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        <RenderComments dish={props.comments} addComment={props.addComment} dishId={props.dish[0].id}/>
+                        <RenderComments dish={props.comments} postComment={props.postComment} dishId={props.dish[0].id}/>
                     </div>
                 </div>
             </div>

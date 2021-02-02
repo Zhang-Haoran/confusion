@@ -5,7 +5,7 @@ import {Loading} from "./LoadingComponent";
 import {baseUrl} from "../shared/baseUrl";
 
 //为什么函数的参数需要中括号？？？
-function RenderMenuItem({dish, onClick}) {
+function RenderMenuItem({dish}) {
     return (
         <Card>
             <Link to={`/menu/${dish.id}`}>

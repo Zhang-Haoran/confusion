@@ -1,14 +1,12 @@
 import React from "react";
 import {Media} from "reactstrap";
+import {baseUrl} from "../shared/baseUrl";
 
 function RenderLeader({leader}){
     return(
-
-
-                  <div key={leader.id} className="col-12 m5-5">
                       <Media tag="li">
                           <Media left middle>
-                              <Media object src={leader.image} alt={leader.name}/>
+                              <Media object src={baseUrl + leader.image} alt={leader.name}/>
                           </Media>
                           <Media body className="ml-5">
                               <Media heading>
@@ -18,7 +16,7 @@ function RenderLeader({leader}){
                               <p>{leader.description}</p>
                           </Media>
                       </Media>
-                  </div>
+
 
 
     );
